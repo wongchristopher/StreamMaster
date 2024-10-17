@@ -82,6 +82,7 @@ if (hlsSetting == default(HLSSettings))
 }
 
 var mainSetting = SettingsHelper.GetSetting<OldSetting>(BuildInfo.SettingsFile);
+// if it matches the old setting format
 if (mainSetting != default(OldSetting))
 {
     if (mainSetting.SDSettings != default(SDSettings) )
@@ -90,7 +91,15 @@ if (mainSetting != default(OldSetting))
         var toWrite = mainSetting.ConvertToSetting();
         SettingsHelper.UpdateSetting(toWrite);
     }
+} else {
+    //does not match old setting format so check for the new settings format
+    mainSetting = SettingsHelper.GetSetting<Setting>(BuildInfo.SettingsFile);
+    if (mainSetting == default(Setting)){
+        // write out to the file if settings are default
+        SettingsHelper.UpdateSetting(new Setting());
+    }
 }
+
 
 var sdSettings = SettingsHelper.GetSetting<SDSettings>(BuildInfo.SDSettingsFile);
 if (sdSettings == default(SDSettings))
