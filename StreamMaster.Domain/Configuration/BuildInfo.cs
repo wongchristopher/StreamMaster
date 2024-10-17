@@ -145,10 +145,10 @@ namespace StreamMaster.Domain.Configuration
         public static readonly string LogFilePath = Path.Combine(LogFolder, "StreamMasterAPI.log");
 
         public static readonly string LoggingFileName = "logsettings.json";
-        public static readonly string LoggingSettingsFile = GetSettingFilePath(LoggingFileName);
+        public static readonly string LoggingSettingsFile = GetSettingFilePath(LoggingFileName, AppDataFolder);
 
         public static readonly string SettingFileName = "settings.json";
-        public static readonly string SettingsFile = GetSettingFilePath(SettingFileName);
+        public static readonly string SettingsFile = GetSettingFilePath(SettingFileName, AppDataFolder);
 
         public static readonly string SDSettingFileName = "sdsettings.json";
         public static readonly string SDSettingsFile = GetSettingFilePath(SDSettingFileName);
